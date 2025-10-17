@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>compu</title>
+    <style>
+        .monitor{
+            width: 300px;
+            height: 220px;
+            background: #d0d8e0;
+            border: 8px solid #000;
+            position: relative;
+            margin: 50px auto;
+        }
+        .pantalla{
+            position:absolute;
+            top: 16px;
+            left: 16px;
+            right: 16px;
+            bottom: 30px;
+            background: #1a1a1a;
+            border: 4px solid #000;
+        }
+        .boton{
+            position: absolute;
+            bottom: 8px;
+            width: 12px;
+            height: 12px;
+            background: #333;
+            border: 2px solid #000;
+        }
+        .boton:nth-child(2){
+            left: 30px;
+        }
+        .boton:nth-child(3){
+            left: 60px;
+        }
+        .boton-rojo{
+            right: 30px;
+            background: #d64545;
+        }
+        .soporte{
+            position: relative;
+            width: 40px;
+            height: 25px;
+            background: #b0b8c0;
+            border: 4px solid #000;
+            margin: -55px auto 0;
+        }
+        .base{
+            position: relative;
+            width: 120px;
+            height: 15px;
+            background: #b0b8c0;
+            border: 4px solid #000;
+            margin: -9px auto 0;
+        }
+        .teclado{
+            position: relative;
+            width: 220px;
+            height: 80px;
+            background: #cfd8e0;
+            border: 6px solid #000;
+            margin: 20px 0 0 220px; 
+        }
+        .tecla{
+            position: absolute;
+            width: 16px;
+            height: 16px;
+            background: #fff;
+            border: 2px solid #000;
+        }
+        .tecla:nth-child(1)  { top: 10px; left: 10px; }
+        .tecla:nth-child(2)  { top: 10px; left: 30px; }
+        .tecla:nth-child(3)  { top: 10px; left: 50px; }
+        .tecla:nth-child(4)  { top: 10px; left: 70px; }
+        .tecla:nth-child(5)  { top: 10px; left: 90px; }
+        .tecla:nth-child(6)  { top: 10px; left: 110px; }
+        .tecla:nth-child(7)  { top: 10px; left: 130px; }
+        .tecla:nth-child(8)  { top: 10px; left: 150px; }
+        .tecla:nth-child(9)  { top: 10px; left: 170px; }
+        .tecla:nth-child(10) { top: 10px; left: 190px; }
+
+        .tecla:nth-child(11) { top: 30px; left: 10px; }
+        .tecla:nth-child(12) { top: 30px; left: 30px; }
+        .tecla:nth-child(13) { top: 30px; left: 50px; }
+        .tecla:nth-child(14) { top: 30px; left: 70px; }
+        .tecla:nth-child(15) { top: 30px; left: 90px; }
+        .tecla:nth-child(16) { top: 30px; left: 110px; }
+        .tecla:nth-child(17) { top: 30px; left: 130px; }
+        .tecla:nth-child(18) { top: 30px; left: 150px; }
+        .tecla:nth-child(19) { top: 30px; left: 170px; }
+        .tecla:nth-child(20) { top: 30px; left: 190px; }
+
+        .tecla:nth-child(21) { top: 50px; left: 10px; }
+        .tecla:nth-child(22) { top: 50px; left: 30px; }
+        .tecla:nth-child(23) { top: 50px; left: 50px; }
+        .tecla:nth-child(24) { top: 50px; left: 70px; }
+        .tecla:nth-child(25) { top: 50px; left: 90px; }
+        .tecla:nth-child(26) { top: 50px; left: 110px; }
+        .tecla:nth-child(27) { top: 50px; left: 130px; }
+        .tecla:nth-child(28) { top: 50px; left: 150px; }
+        .tecla:nth-child(29) { top: 50px; left: 170px; }
+        .tecla:nth-child(30) { top: 50px; left: 190px; }
+        .setup{
+            position: relative;
+            width: 700px;
+            margin: 40px auto;
+        }
+        .cpu {
+        position: absolute;
+        top: -28px;
+        left: 560px;
+        width: 120px;
+        height: 280px;
+        background: #cfd8e0;
+        border: 8px solid #000;
+        }
+
+        .bandeja{
+        position: absolute;
+        top: 25px;
+        left: 12px;
+        width: 90px;
+        height: 20px;
+        background: #bbb;
+        border: 3px solid #000;
+        }
+
+        .disquetera {
+        position: absolute;
+        top: 70px;
+        left: 12px;
+        width: 90px;
+        height: 20px;
+        background: #999;
+        border: 3px solid #000;
+        }
+
+        .cpu .boton {
+            position: absolute;
+            width: 16px;
+            height: 16px;
+            border: 2px solid #000;
+        }
+        .cpu .boton-power {
+            right: 10px;
+            top: 120px;
+            background: #d64545;
+        }
+        .cpu .boton-reset {
+            right: 10px;
+            top: 120px;
+            background: #333;
+        }
+
+        .rejillas {
+            position: absolute;
+            bottom: 20px;
+            left: 10px;
+            width: 100px;
+            height: 100px;
+            background: repeating-linear-gradient(to bottom,#000 0 3px, transparent 3px 6px);
+        }
+        .mouse {
+            position: absolute;
+            top: 300px;
+            left: 500px; 
+            width: 40px;
+            height: 60px;
+            background: #d0d8e0;
+            border: 4px solid #000;
+            border-radius: 20px;
+        }
+        .mouse::before {
+            content: "";
+            position: absolute;
+            top: 10px;
+            left: 15px;
+            width: 8px;
+            height: 20px;
+            background: #333;
+            border: 2px solid #000;
+        }
+    </style>
+</head>
+<body>
+    <div class="setup">
+        <div class="monitor">
+            <div class="pantalla"></div>
+            <div class="boton"></div>
+            <div class="boton"></div>
+            <div class="boton boton-rojo"></div>
+        </div>
+
+        <div class="soporte"></div>
+        <div class="base"></div>
+
+        <div class="cpu">
+            <div class="bandeja"></div>
+            <div class="disquetera"></div>
+            <div class="boton boton-power"></div>
+            <div class="boton boton-reset"></div>
+            <div class="rejillas"></div>
+        </div>
+
+        <div class="teclado">
+            <div class="tecla"></div>
+            <div class="tecla"></div>
+            <div class="tecla"></div>
+            <div class="tecla"></div>
+            <div class="tecla"></div>
+            <div class="tecla"></div>
+            <div class="tecla"></div>
+            <div class="tecla"></div>
+            <div class="tecla"></div>
+            <div class="tecla"></div>
+
+            <div class="tecla"></div>
+            <div class="tecla"></div>
+            <div class="tecla"></div>
+            <div class="tecla"></div>
+            <div class="tecla"></div>
+            <div class="tecla"></div>
+            <div class="tecla"></div>
+            <div class="tecla"></div>
+            <div class="tecla"></div>
+            <div class="tecla"></div>
+
+            <div class="tecla"></div>
+            <div class="tecla"></div>
+            <div class="tecla"></div>
+            <div class="tecla"></div>
+            <div class="tecla"></div>
+            <div class="tecla"></div>
+            <div class="tecla"></div>
+            <div class="tecla"></div>
+            <div class="tecla"></div>
+            <div class="tecla"></div>
+        </div>
+        <div class="mouse"></div>
+    </div>
+
+</body>
+</html>

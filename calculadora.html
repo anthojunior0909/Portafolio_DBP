@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #202020;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .calculadora {
+            width: 320px;
+            background: #202020;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+        }
+
+        .header {
+            background: #202020;
+            padding: 12px 16px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid #2d2d2d;
+        }
+
+        .titulo {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #fff;
+            font-size: 12px;
+        }
+
+        .icono-calc {
+            width: 16px;
+            height: 16px;
+            background: #0078d4;
+            border-radius: 2px;
+        }
+
+        .controles {
+            display: flex;
+            gap: 12px;
+        }
+
+        .btn-control {
+            width: 46px;
+            height: 32px;
+            background: transparent;
+            border: none;
+            color: #fff;
+            font-size: 12px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .btn-control:hover {
+            background: #2d2d2d;
+        }
+
+        .menu-bar {
+            display: flex;
+            align-items: center;
+            padding: 8px 16px;
+            gap: 16px;
+            background: #202020;
+        }
+
+        .menu-btn {
+            background: transparent;
+            border: none;
+            color: #fff;
+            cursor: pointer;
+            padding: 4px 8px;
+            font-size: 14px;
+        }
+
+        .menu-text {
+            color: #fff;
+            font-size: 15px;
+            font-weight: 600;
+        }
+
+        .display {
+            background: #202020;
+            padding: 24px 16px 8px;
+            text-align: right;
+        }
+
+        .resultado {
+            color: #fff;
+            font-size: 48px;
+            font-weight: 600;
+            min-height: 58px;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            overflow-x: auto;
+        }
+
+        .memoria {
+            display: flex;
+            gap: 12px;
+            padding: 8px 16px;
+            background: #202020;
+        }
+
+        .mem-btn {
+            flex: 1;
+            background: transparent;
+            border: none;
+            color: #666;
+            padding: 8px;
+            font-size: 13px;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+
+        .mem-btn:hover {
+            background: #2d2d2d;
+        }
+
+        .mem-btn.active {
+            color: #fff;
+        }
+
+        .teclado {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2px;
+            padding: 2px;
+            background: #202020;
+        }
+
+        .btn {
+            background: #2d2d2d;
+            border: none;
+            color: #fff;
+            font-size: 16px;
+            padding: 24px;
+            cursor: pointer;
+            transition: background 0.1s;
+        }
+
+        .btn:hover {
+            background: #3d3d3d;
+        }
+
+        .btn:active {
+            background: #4d4d4d;
+        }
+
+        .btn.operador {
+            background: #2d2d2d;
+            font-size: 18px;
+        }
+
+        .btn.igual {
+            background: #0078d4;
+        }
+
+        .btn.igual:hover {
+            background: #1884de;
+        }
+
+        .btn.especial {
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div class="calculadora">
+        <div class="header">
+            <div class="titulo">
+                <div class="icono-calc"></div>
+                <span>Calculadora</span>
+            </div>
+            <div class="controles">
+                <button class="btn-control">─</button>
+                <button class="btn-control">□</button>
+                <button class="btn-control">×</button>
+            </div>
+        </div>
+
+        <div class="menu-bar">
+            <button class="menu-btn">☰</button>
+            <span class="menu-text">Estándar</span>
+            <button class="menu-btn">⧉</button>
+            <button class="menu-btn" style="margin-left: auto;">⟲</button>
+        </div>
+
+        <div class="display">
+            <div class="resultado" id="pantalla">0</div>
+        </div>
+
+        <div class="teclado">
+            <button class="btn especial" onclick="agregar('%')">%</button>
+            <button class="btn especial" onclick="limpiar()">CE</button>
+            <button class="btn especial" onclick="limpiar()">C</button>
+            <button class="btn operador" onclick="borrar()">⌫</button>
+
+            <button class="btn" onclick="agregar('7')">7</button>
+            <button class="btn" onclick="agregar('8')">8</button>
+            <button class="btn" onclick="agregar('9')">9</button>
+            <button class="btn operador" onclick="agregar('/')">÷</button>
+
+            <button class="btn" onclick="agregar('4')">4</button>
+            <button class="btn" onclick="agregar('5')">5</button>
+            <button class="btn" onclick="agregar('6')">6</button>
+            <button class="btn operador" onclick="agregar('*')">×</button>
+
+            <button class="btn" onclick="agregar('1')">1</button>
+            <button class="btn" onclick="agregar('2')">2</button>
+            <button class="btn" onclick="agregar('3')">3</button>
+            <button class="btn operador" onclick="agregar('-')">−</button>
+
+            <button class="btn" onclick="agregar('0')">0</button>
+            <button class="btn" onclick="agregar('.')">.</button>
+            <button class="btn operador" onclick="agregar('+')">+</button>
+            <button class="btn igual" onclick="calcular()">=</button>
+        </div>
+    </div>
+
+    <script>
+        const pantalla = document.getElementById("pantalla");
+
+        function agregar(valor) {
+            if (pantalla.textContent === "0") pantalla.textContent = "";
+            pantalla.textContent += valor;
+        }
+
+        function limpiar() {
+            pantalla.textContent = "0";
+        }
+
+        function borrar() {
+            pantalla.textContent = pantalla.textContent.slice(0, -1) || "0";
+        }
+
+        function calcular() {
+            try {
+                pantalla.textContent = eval(
+                    pantalla.textContent
+                        .replace("×", "*")
+                        .replace("÷", "/")
+                );
+            } catch {
+                pantalla.textContent = "Error";
+            }
+        }
+    </script>
+</body>
+</html>
