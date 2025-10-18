@@ -8,141 +8,625 @@
   <!-- Bootstrap local -->
   <link rel="stylesheet" href="bootstrap-5.3.8-dist/css/bootstrap.min.css">
   <script src="bootstrap-5.3.8-dist/js/bootstrap.bundle.min.js"></script>
+
+  <style>
+    * {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background-color: #0a0a0a;
+      color: #e0e0e0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    /* Navbar oscuro */
+    .navbar {
+      background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%) !important;
+      border-bottom: 2px solid #00d9c5;
+      box-shadow: 0 4px 20px rgba(0, 217, 197, 0.2);
+    }
+
+    .navbar-brand {
+      font-weight: 800;
+      letter-spacing: 2px;
+      color: #00d9c5 !important;
+      text-shadow: 0 0 10px rgba(0, 217, 197, 0.5);
+    }
+
+    .nav-link {
+      color: #e0e0e0 !important;
+      transition: all 0.3s ease;
+      position: relative;
+      padding: 0.5rem 1rem !important;
+    }
+
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: 0;
+      left: 50%;
+      background-color: #00d9c5;
+      transition: all 0.3s ease;
+      transform: translateX(-50%);
+      box-shadow: 0 0 10px rgba(0, 217, 197, 0.8);
+    }
+
+    .nav-link:hover {
+      color: #00d9c5 !important;
+    }
+
+    .nav-link:hover::after {
+      width: 80%;
+    }
+
+    /* Header oscuro */
+    header {
+      background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+      border-bottom: 3px solid #00d9c5;
+      position: relative;
+      overflow: hidden;
+    }
+
+    header::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -10%;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(0, 217, 197, 0.1) 0%, transparent 70%);
+      border-radius: 50%;
+      animation: pulse 4s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); opacity: 0.5; }
+      50% { transform: scale(1.1); opacity: 0.8; }
+    }
+
+    header h1 {
+      color: #00d9c5;
+      text-shadow: 0 0 20px rgba(0, 217, 197, 0.6);
+      position: relative;
+      z-index: 1;
+    }
+
+    header p {
+      color: #b0b0b0;
+      position: relative;
+      z-index: 1;
+    }
+
+    .badge {
+      background-color: #2d2d2d !important;
+      color: #00d9c5 !important;
+      border: 1px solid #00d9c5;
+      box-shadow: 0 0 10px rgba(0, 217, 197, 0.3);
+    }
+
+    /* Perfil */
+    #perfil img {
+      border: 4px solid #00d9c5;
+      box-shadow: 0 0 30px rgba(0, 217, 197, 0.4);
+      background-color: #1a1a1a;
+      transition: all 0.3s ease;
+    }
+
+    #perfil img:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 40px rgba(0, 217, 197, 0.6);
+    }
+
+    #perfil p {
+      color: #b0b0b0;
+    }
+
+    /* Tabla oscura */
+    .table {
+      background-color: #1a1a1a;
+      color: #e0e0e0;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 4px 20px rgba(0, 217, 197, 0.1);
+    }
+
+    .table thead {
+      background: linear-gradient(135deg, #2d2d2d 0%, #1a1a1a 100%);
+      border-bottom: 2px solid #00d9c5;
+    }
+
+    .table thead th {
+      color: #00d9c5;
+      font-weight: 600;
+    }
+    
+    .table tbody tr {
+      border-bottom: 1px solid #2d2d2d;
+      transition: all 0.3s ease;
+    }
+
+    .table tbody tr:hover {
+      background-color: #2d2d2d;
+      transform: translateX(5px);
+    }
+
+    .table tbody td {
+      padding: 1rem;
+    }
+
+    /* Secciones */
+    section h2 {
+      color: #00d9c5;
+      font-weight: 700;
+      font-size: 2.5rem;
+      text-shadow: 0 0 15px rgba(0, 217, 197, 0.4);
+      border-bottom: 3px solid #00d9c5;
+      padding-bottom: 10px;
+      display: inline-block;
+      margin-bottom: 2rem;
+    }
+
+    /* Tarjetas oscuras */
+    .card {
+      background-color: #1a1a1a;
+      border: 2px solid #2d2d2d;
+      border-radius: 15px;
+      transition: all 0.4s ease;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+    }
+
+    .card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.7);
+    }
+
+    .card.border-success {
+      border-color: #00d9c5 !important;
+    }
+
+    .card.border-success:hover {
+      box-shadow: 0 8px 30px rgba(0, 217, 197, 0.3);
+    }
+
+    .card.border-danger {
+      border-color: #00d9c5 !important;
+    }
+
+    .card.border-danger:hover {
+      box-shadow: 0 8px 30px rgba(0, 217, 197, 0.3);
+    }
+
+    .card.border-warning {
+      border-color: #00d9c5 !important;
+    }
+
+    .card.border-warning:hover {
+      box-shadow: 0 8px 30px rgba(0, 217, 197, 0.3);
+    }
+
+    .card h3 {
+      font-weight: 700;
+      padding-bottom: 15px;
+      margin-bottom: 20px;
+      position: relative;
+    }
+
+    .card h3::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 50px;
+      height: 3px;
+      border-radius: 2px;
+    }
+
+    .card.border-success h3 {
+      color: #00d9c5;
+    }
+
+    .card.border-success h3::after {
+      background-color: #00d9c5;
+      box-shadow: 0 0 10px rgba(0, 217, 197, 0.6);
+    }
+
+    .card.border-danger h3 {
+      color: #ff3366;
+    }
+
+    .card.border-danger h3::after {
+      background-color: #ff3366;
+      box-shadow: 0 0 10px rgba(255, 51, 102, 0.6);
+    }
+
+    .card.border-warning h3 {
+      color: #ffaa00;
+    }
+
+    .card.border-warning h3::after {
+      background-color: #ffaa00;
+      box-shadow: 0 0 10px rgba(255, 170, 0, 0.6);
+    }
+
+    /* Botones oscuros */
+    .btn-outline-success {
+      color: #00d9c5;
+      border-color: #00d9c5;
+      transition: all 0.3s ease;
+    }
+
+    .btn-outline-success:hover {
+      background-color: #00d9c5;
+      border-color: #00d9c5;
+      color: #0a0a0a;
+      box-shadow: 0 0 20px rgba(0, 217, 197, 0.5);
+      transform: translateY(-2px);
+    }
+
+    .btn-outline-danger {
+      color: #ff3366;
+      border-color: #ff3366;
+      transition: all 0.3s ease;
+    }
+
+    .btn-outline-danger:hover {
+      background-color: #ff3366;
+      border-color: #ff3366;
+      color: #0a0a0a;
+      box-shadow: 0 0 20px rgba(255, 51, 102, 0.5);
+      transform: translateY(-2px);
+    }
+
+    .btn-outline-warning {
+      color: #ffaa00;
+      border-color: #ffaa00;
+      transition: all 0.3s ease;
+    }
+
+    .btn-outline-warning:hover {
+      background-color: #ffaa00;
+      border-color: #ffaa00;
+      color: #0a0a0a;
+      box-shadow: 0 0 20px rgba(255, 170, 0, 0.5);
+      transform: translateY(-2px);
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #00d9c5 0%, #00b3a3 100%);
+      border: none;
+      color: #0a0a0a;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+
+    .btn-primary:hover {
+      background: linear-gradient(135deg, #00b3a3 0%, #00d9c5 100%);
+      box-shadow: 0 0 20px rgba(0, 217, 197, 0.5);
+      transform: translateY(-2px);
+    }
+
+    /* Lista de trabajos */
+    .list-group-item {
+      background-color: #1a1a1a;
+      border: 1px solid #2d2d2d;
+      border-left: 3px solid #00d9c5;
+      color: #e0e0e0;
+      transition: all 0.3s ease;
+      margin-bottom: 15px;
+      border-radius: 10px;
+    }
+
+    .list-group-item:hover {
+      background-color: #2d2d2d;
+      border-left-width: 5px;
+      transform: translateX(10px);
+      box-shadow: 0 4px 15px rgba(0, 217, 197, 0.2);
+    }
+
+    .list-group-item strong {
+      color: #00d9c5;
+    }
+
+    .list-group-item .text-muted {
+      color: #808080 !important;
+    }
+
+    /* Badge contador */
+    .exercise-count {
+      background: linear-gradient(135deg, #00d9c5 0%, #00b3a3 100%);
+      color: #0a0a0a;
+      padding: 5px 12px;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      box-shadow: 0 0 15px rgba(0, 217, 197, 0.4);
+    }
+
+    /* Footer oscuro */
+    footer {
+      background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+      border-top: 2px solid #00d9c5;
+      box-shadow: 0 -4px 20px rgba(0, 217, 197, 0.2);
+    }
+
+    footer p {
+      color: #b0b0b0;
+    }
+
+    footer .fw-bold {
+      color: #00d9c5;
+      text-shadow: 0 0 10px rgba(0, 217, 197, 0.4);
+    }
+
+    /* Animaciones */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .animate-fade {
+      animation: fadeIn 0.8s ease;
+    }
+
+    /* Scrollbar oscuro */
+    ::-webkit-scrollbar {
+      width: 12px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: #1a1a1a;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: #00d9c5;
+      border-radius: 6px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: #00b3a3;
+    }
+  </style>
 </head>
 
-<body class="bg-light">
-  <!-- Encabezado -->
-  <header class="bg-primary text-white text-center py-4 mb-4 shadow-sm">
-    <h1 class="fw-bold">Mi Portafolio DBP I</h1>
-    <p class="mb-0">Anthony Junior Quispe Cruz</p>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+    <div class="container">
+      <a class="navbar-brand" href="#">MI PORTAFOLIO</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="#perfil">Perfil</a></li>
+          <li class="nav-item"><a class="nav-link" href="#trabajos">Trabajos</a></li>
+          <li class="nav-item"><a class="nav-link" href="#ejercicios">Ejercicios</a></li>
+          <li class="nav-item"><a class="nav-link" href="#practicas">Prácticas</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ENCABEZADO -->
+  <header class="text-center py-5 mb-5 position-relative">
+    <div class="container position-relative">
+      <h1 class="display-3 fw-bold mb-3">MI PORTAFOLIO DBP I</h1>
+      <p class="fs-4 mb-3">Anthony Junior Quispe Cruz</p>
+      
+    </div>
   </header>
 
-  <!-- Contenedor principal -->
+  <!-- CONTENIDO PRINCIPAL -->
   <div class="container">
 
-    <!-- Perfil -->
-    <div class="text-center mb-5">
-      <img src="foto.jpeg" alt="Foto de perfil" class="rounded-circle shadow mb-3" width="150" height="150">
-      <p class="text-muted">Soy un estudiante de Ingenieria de Sistema, persona curiosa y entusiasta del aprendizaje. Me interesa el desarrollo web, la lógica de programación y me gusta los animes.</p>
-    </div>
+    <!-- PERFIL -->
+    <section id="perfil" class="text-center mb-5 animate-fade">
+      <img src="foto.jpeg" alt="Foto de perfil" class="rounded-circle mb-4" width="180" height="180">
+      <p class="fs-5 mx-auto" style="max-width: 700px;">
+        Soy un estudiante de Ingeniería de Sistemas, curioso y entusiasta del aprendizaje. 
+        Me interesa el desarrollo web, la lógica de programación y los animes.
+      </p>
 
-    <!-- Trabajos -->
-    <section class="mb-5">
-      <h2 class="text-primary border-bottom pb-2">Trabajos </h2>
-      <ul class="list-group list-group-flush mt-3">
-        <li class="list-group-item"><a href="compu.html" class="text-decoration-none">Trabajo CSS - Computadora</a></li>
-        <li class="list-group-item"><a href="calculadora.html" class="text-decoration-none">Trabajo Calculadora</a></li>
-        <li class="list-group-item"><a href="Practica_de_HTML/Practica_de_html.html" class="text-decoration-none">Práctica de HTML</a></li>
+      <!-- Tabla de información -->
+      <div class="table-responsive mt-5">
+        <table class="table table-dark table-hover align-middle">
+          <thead>
+            <tr>
+              <th class="py-3">Dato</th>
+              <th class="py-3">Información</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td class="fw-semibold">Nombre</td><td>Anthony Junior</td></tr>
+            <tr><td class="fw-semibold">Carrera</td><td>Ingeniería de Sistemas</td></tr>
+            <tr><td class="fw-semibold">Correo</td><td>60908700@est.unap.edu.pe</td></tr>
+            <tr><td class="fw-semibold">Universidad</td><td>Universidad Nacional del Altiplano</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- TRABAJOS -->
+    <section id="trabajos" class="mb-5 animate-fade">
+      <h2 class="mb-4">Trabajos</h2>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+          <div>
+            <strong>Trabajo CSS - Computadora</strong>
+            <p class="mb-0 small text-muted">Diseño de computadora con CSS puro</p>
+          </div>
+          <a href="compu.html" class="btn btn-primary">Ver proyecto</a>
+        </li>
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+          <div>
+            <strong>Trabajo Calculadora</strong>
+            <p class="mb-0 small text-muted">Calculadora funcional con JavaScript</p>
+          </div>
+          <a href="calculadora.html" class="btn btn-primary">Ver proyecto</a>
+        </li>
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+          <div>
+            <strong>Práctica de HTML</strong>
+            <p class="mb-0 small text-muted">Fundamentos de estructura web</p>
+          </div>
+          <a href="Practica_de_HTML/Practica_de_html.html" class="btn btn-primary">Ver proyecto</a>
+        </li>
       </ul>
     </section>
 
-    <!-- Ejercicios -->
-    <section class="mb-5">
-      <h2 class="text-primary border-bottom pb-2">Ejercicios</h2>
+    <!-- EJERCICIOS -->
+    <section id="ejercicios" class="mb-5 animate-fade">
+      <h2 class="mb-4">Ejercicios</h2>
 
-      <div class="row mt-3 g-4">
+      <div class="row g-4">
         <!-- CSS -->
-        <div class="col-md-4">
-          <div class="card h-100 shadow-sm">
-            <div class="card-body">
-              <h3 class="text-success">CSS</h3>
-              <ul class="list-unstyled">
-                <li><a href="ejercicios-css/prac1.html">Ejercicio 01</a></li>
-                <li><a href="ejercicios-css/prac02.html">Ejercicio 02</a></li>
-                <li><a href="ejercicios-css/pract03.html">Ejercicio 03</a></li>
-                <li><a href="ejercicios-css/pract04.html">Ejercicio 04</a></li>
-                <li><a href="ejercicios-css/flex01.html">Flex 01</a></li>
-                <li><a href="ejercicios-css/flex02.html">Flex 02</a></li>
-                <li><a href="ejercicios-css/flex03.html">Flex 03</a></li>
-                <li><a href="ejercicios-css/flex04.html">Flex 04</a></li>
-              </ul>
+        <div class="col-md-6 col-lg-3">
+          <div class="card h-100 border-success">
+            <div class="card-body p-4">
+              <div class="d-flex justify-content-between align-items-center mb-3">
+                <h3 class="mb-0">CSS</h3>
+                <span class="exercise-count">8</span>
+              </div>
+              <div class="d-grid gap-2">
+                <a href="ejercicios-css/prac1.html" class="btn btn-outline-success btn-sm">Ejercicio 01</a>
+                <a href="ejercicios-css/prac02.html" class="btn btn-outline-success btn-sm">Ejercicio 02</a>
+                <a href="ejercicios-css/pract03.html" class="btn btn-outline-success btn-sm">Ejercicio 03</a>
+                <a href="ejercicios-css/pract04.html" class="btn btn-outline-success btn-sm">Ejercicio 04</a>
+                <a href="ejercicios-css/flex01.html" class="btn btn-outline-success btn-sm">Flex 01</a>
+                <a href="ejercicios-css/flex02.html" class="btn btn-outline-success btn-sm">Flex 02</a>
+                <a href="ejercicios-css/flex03.html" class="btn btn-outline-success btn-sm">Flex 03</a>
+                <a href="ejercicios-css/flex04.html" class="btn btn-outline-success btn-sm">Flex 04</a>
+              </div>
             </div>
           </div>
         </div>
 
         <!-- HTML -->
-        <div class="col-md-4">
-          <div class="card h-100 shadow-sm">
-            <div class="card-body">
-              <h3 class="text-danger">HTML</h3>
-              <ul class="list-unstyled">
-                <li><a href="ejercicios-html/web1.html">Ejercicio 01</a></li>
-                <li><a href="ejercicios-html/web2.html">Ejercicio 02</a></li>
-              </ul>
+        <div class="col-md-6 col-lg-3">
+          <div class="card h-100 border-danger">
+            <div class="card-body p-4">
+              <div class="d-flex justify-content-between align-items-center mb-3">
+                <h3 class="mb-0">HTML</h3>
+                <span class="exercise-count">2</span>
+              </div>
+              <div class="d-grid gap-2">
+                <a href="ejercicios-html/web1.html" class="btn btn-outline-danger btn-sm">Ejercicio 01</a>
+                <a href="ejercicios-html/web2.html" class="btn btn-outline-danger btn-sm">Ejercicio 02</a>
+              </div>
             </div>
           </div>
         </div>
 
         <!-- JavaScript -->
-        <div class="col-md-4">
-          <div class="card h-100 shadow-sm">
-            <div class="card-body">
-              <h3 class="text-warning">JavaScript</h3>
-              <ul class="list-unstyled">
-                <li><a href="ejercicios-javascript/prac01.html">Ejercicio 01</a></li>
-                <li><a href="ejercicios-javascript/prac02.html">Ejercicio 02</a></li>
-                <li><a href="ejercicios-javascript/prac03.html">Ejercicio 03</a></li>
-                <li><a href="ejercicios-javascript/prac04.html">Ejercicio 04</a></li>
-                <li><a href="ejercicios-javascript/prac05.html">Ejercicio 05</a></li>
-                <li><a href="ejercicios-javascript/prac06.html">Ejercicio 06</a></li>
-              </ul>
+        <div class="col-md-6 col-lg-3">
+          <div class="card h-100 border-warning">
+            <div class="card-body p-4">
+              <div class="d-flex justify-content-between align-items-center mb-3">
+                <h3 class="mb-0">JavaScript</h3>
+                <span class="exercise-count">6</span>
+              </div>
+              <div class="d-grid gap-2">
+                <a href="ejercicios-javascript/prac01.html" class="btn btn-outline-warning btn-sm">Ejercicio 01</a>
+                <a href="ejercicios-javascript/prac02.html" class="btn btn-outline-warning btn-sm">Ejercicio 02</a>
+                <a href="ejercicios-javascript/prac03.html" class="btn btn-outline-warning btn-sm">Ejercicio 03</a>
+                <a href="ejercicios-javascript/prac04.html" class="btn btn-outline-warning btn-sm">Ejercicio 04</a>
+                <a href="ejercicios-javascript/prac05.html" class="btn btn-outline-warning btn-sm">Ejercicio 05</a>
+                <a href="ejercicios-javascript/prac06.html" class="btn btn-outline-warning btn-sm">Ejercicio 06</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Bootstrap -->
+        <div class="col-md-6 col-lg-3">
+          <div class="card h-100 border-warning">
+            <div class="card-body p-4">
+              <div class="d-flex justify-content-between align-items-center mb-3">
+                <h3 class="mb-0">Bootstrap</h3>
+                <span class="exercise-count">4</span>
+              </div>
+              <div class="d-grid gap-2">
+                <a href="boot01.html" class="btn btn-outline-warning btn-sm">Ejercicio 01</a>
+                <a href="boot02.html" class="btn btn-outline-warning btn-sm">Ejercicio 02</a>
+                <a href="boot03.html" class="btn btn-outline-warning btn-sm">Ejercicio 03</a>
+                <a href="boot04.html" class="btn btn-outline-warning btn-sm">Ejercicio 04</a>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Prácticas -->
-    <section class="mb-5">
-      <h2 class="text-primary border-bottom pb-2">Prácticas</h2>
+    <!-- PRÁCTICAS -->
+    <section id="practicas" class="mb-5 animate-fade">
+      <h2 class="mb-4">Prácticas</h2>
 
-      <div class="row mt-3 g-4">
+      <div class="row g-4">
         <!-- CSS -->
-        <div class="col-md-4">
-          <div class="card h-100 shadow-sm">
-            <div class="card-body">
-              <h3 class="text-success">CSS</h3>
-              <ul class="list-unstyled">
-                <li><a href="practicas/practica03.html">Práctica 01</a></li>
-                <li><a href="practicas/practica04.html">Práctica 02</a></li>
-              </ul>
+        <div class="col-md-6 col-lg-4">
+          <div class="card h-100 border-success">
+            <div class="card-body p-4">
+              <div class="d-flex justify-content-between align-items-center mb-3">
+                <h3 class="mb-0">CSS</h3>
+                <span class="exercise-count">3</span>
+              </div>
+              <div class="d-grid gap-2">
+                <a href="practicas/practica03.html" class="btn btn-outline-success btn-sm">Práctica 01</a>
+                <a href="practicas/practica04.html" class="btn btn-outline-success btn-sm">Práctica 02</a>
+                <a href="practicas/tablacss.html" class="btn btn-outline-success btn-sm">Práctica 03</a>
+              </div>
             </div>
           </div>
         </div>
 
         <!-- HTML -->
-        <div class="col-md-4">
-          <div class="card h-100 shadow-sm">
-            <div class="card-body">
-              <h3 class="text-danger">HTML</h3>
-              <ul class="list-unstyled">
-                <li><a href="practicas/formulario.html">Práctica 01</a></li>
-                <li><a href="practicas/propiedades_de_texto.html">Práctica 02</a></li>
-                <li><a href="practicas/practicavideo.html">Práctica 03</a></li>
-              </ul>
+        <div class="col-md-6 col-lg-4">
+          <div class="card h-100 border-danger">
+            <div class="card-body p-4">
+              <div class="d-flex justify-content-between align-items-center mb-3">
+                <h3 class="mb-0">HTML</h3>
+                <span class="exercise-count">3</span>
+              </div>
+              <div class="d-grid gap-2">
+                <a href="practicas/formulario.html" class="btn btn-outline-danger btn-sm">Práctica 01</a>
+                <a href="practicas/propiedades_de_texto.html" class="btn btn-outline-danger btn-sm">Práctica 02</a>
+                <a href="practicas/practicavideo.html" class="btn btn-outline-danger btn-sm">Práctica 03</a>
+              </div>
             </div>
           </div>
         </div>
 
         <!-- JavaScript -->
-        <div class="col-md-4">
-          <div class="card h-100 shadow-sm">
-            <div class="card-body">
-              <h3 class="text-warning">JavaScript</h3>
-              <ul class="list-unstyled">
-                <li><a href="practicas/javascript01.html">Ejercicio 01</a></li>
-                <li><a href="practicas/javascript02.html">Ejercicio 02</a></li>
-              </ul>
+        <div class="col-md-6 col-lg-4">
+          <div class="card h-100 border-warning">
+            <div class="card-body p-4">
+              <div class="d-flex justify-content-between align-items-center mb-3">
+                <h3 class="mb-0">JavaScript</h3>
+                <span class="exercise-count">2</span>
+              </div>
+              <div class="d-grid gap-2">
+                <a href="practicas/javascript01.html" class="btn btn-outline-warning btn-sm">Ejercicio 01</a>
+                <a href="practicas/javascript02.html" class="btn btn-outline-warning btn-sm">Ejercicio 02</a>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </section>
+
   </div>
 
-  <!-- Footer -->
-  <footer class="bg-primary text-white text-center py-3 mt-5">
-    <p class="mb-0">© 2025 Mi Portafolio DBP I - Todos los derechos reservados</p>
+  <!-- FOOTER -->
+  <footer class="text-center py-4 mt-5">
+    <div class="container">
+      <p class="mb-2 fs-5 fw-bold">© 2025 MI PORTAFOLIO DBP I</p>
+      <p class="mb-0">Todos los derechos reservados | Hecho con 🩵 y ☕</p>
+    </div>
   </footer>
+
 </body>
 </html>
