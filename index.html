@@ -146,6 +146,7 @@
     .table tbody tr {
       border-bottom: 1px solid #2d2d2d;
       transition: all 0.3s ease;
+      background-color: #1a1a1a;
     }
 
     .table tbody tr:hover {
@@ -155,6 +156,56 @@
 
     .table tbody td {
       padding: 1rem;
+    }
+
+    /* Divisor de Unidad */
+    .unit-divider {
+      background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+      border: 2px solid #00d9c5;
+      border-radius: 15px;
+      padding: 2rem;
+      margin: 3rem 0;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 0 30px rgba(0, 217, 197, 0.2);
+    }
+
+    .unit-divider::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(0, 217, 197, 0.1), transparent);
+      animation: shimmer 3s infinite;
+    }
+
+    @keyframes shimmer {
+      0% { left: -100%; }
+      100% { left: 100%; }
+    }
+
+    .unit-divider h2 {
+      color: #00d9c5;
+      font-weight: 800;
+      font-size: 2.5rem;
+      margin: 0;
+      text-shadow: 0 0 20px rgba(0, 217, 197, 0.5);
+      position: relative;
+      z-index: 1;
+    }
+
+    .unit-divider .unit-number {
+      display: inline-block;
+      background: linear-gradient(135deg, #00d9c5 0%, #00b3a3 100%);
+      color: #0a0a0a;
+      padding: 0.5rem 1.5rem;
+      border-radius: 50px;
+      font-weight: 700;
+      margin-top: 1rem;
+      box-shadow: 0 0 20px rgba(0, 217, 197, 0.4);
     }
 
     /* Secciones */
@@ -167,6 +218,14 @@
       padding-bottom: 10px;
       display: inline-block;
       margin-bottom: 2rem;
+    }
+
+    section h3 {
+      color: #00d9c5;
+      font-weight: 600;
+      font-size: 1.8rem;
+      margin-bottom: 1.5rem;
+      text-shadow: 0 0 10px rgba(0, 217, 197, 0.3);
     }
 
     /* Tarjetas oscuras */
@@ -234,21 +293,21 @@
     }
 
     .card.border-danger h3 {
-      color: #ff3366;
+      color: #00d9c5;
     }
 
     .card.border-danger h3::after {
-      background-color: #ff3366;
-      box-shadow: 0 0 10px rgba(255, 51, 102, 0.6);
+      background-color: #00d9c5;
+      box-shadow: 0 0 10px rgba(0, 217, 197, 0.6);
     }
 
     .card.border-warning h3 {
-      color: #ffaa00;
+      color: #00d9c5;
     }
 
     .card.border-warning h3::after {
-      background-color: #ffaa00;
-      box-shadow: 0 0 10px rgba(255, 170, 0, 0.6);
+      background-color: #00d9c5;
+      box-shadow: 0 0 10px rgba(0, 217, 197, 0.6);
     }
 
     /* Botones oscuros */
@@ -267,30 +326,30 @@
     }
 
     .btn-outline-danger {
-      color: #ff3366;
-      border-color: #ff3366;
+      color: #00d9c5;
+      border-color: #00d9c5;
       transition: all 0.3s ease;
     }
 
     .btn-outline-danger:hover {
-      background-color: #ff3366;
-      border-color: #ff3366;
+      background-color: #00d9c5;
+      border-color: #00d9c5;
       color: #0a0a0a;
-      box-shadow: 0 0 20px rgba(255, 51, 102, 0.5);
+      box-shadow: 0 0 20px rgba(0, 217, 197, 0.5);
       transform: translateY(-2px);
     }
 
     .btn-outline-warning {
-      color: #ffaa00;
-      border-color: #ffaa00;
+      color: #00d9c5;
+      border-color: #00d9c5;
       transition: all 0.3s ease;
     }
 
     .btn-outline-warning:hover {
-      background-color: #ffaa00;
-      border-color: #ffaa00;
+      background-color: #00d9c5;
+      border-color: #00d9c5;
       color: #0a0a0a;
-      box-shadow: 0 0 20px rgba(255, 170, 0, 0.5);
+      box-shadow: 0 0 20px rgba(0, 217, 197, 0.5);
       transform: translateY(-2px);
     }
 
@@ -343,6 +402,28 @@
       font-size: 0.85rem;
       font-weight: 700;
       box-shadow: 0 0 15px rgba(0, 217, 197, 0.4);
+    }
+
+    /* Empty State */
+    .empty-state {
+      background-color: #1a1a1a;
+      border: 2px dashed #2d2d2d;
+      border-radius: 15px;
+      padding: 3rem;
+      text-align: center;
+      color: #808080;
+      transition: all 0.3s ease;
+    }
+
+    .empty-state:hover {
+      border-color: #00d9c5;
+      box-shadow: 0 0 20px rgba(0, 217, 197, 0.1);
+    }
+
+    .empty-state i {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      color: #00d9c5;
     }
 
     /* Footer oscuro */
@@ -403,9 +484,8 @@
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ms-auto">
           <li class="nav-item"><a class="nav-link" href="#perfil">Perfil</a></li>
-          <li class="nav-item"><a class="nav-link" href="#trabajos">Trabajos</a></li>
-          <li class="nav-item"><a class="nav-link" href="#ejercicios">Ejercicios</a></li>
-          <li class="nav-item"><a class="nav-link" href="#practicas">Prácticas</a></li>
+          <li class="nav-item"><a class="nav-link" href="#unidad1">Unidad I</a></li>
+          <li class="nav-item"><a class="nav-link" href="#unidad2">Unidad II</a></li>
         </ul>
       </div>
     </div>
@@ -416,14 +496,13 @@
     <div class="container position-relative">
       <h1 class="display-3 fw-bold mb-3">MI PORTAFOLIO DBP I</h1>
       <p class="fs-4 mb-3">Anthony Junior Quispe Cruz</p>
-      
     </div>
   </header>
 
   <!-- CONTENIDO PRINCIPAL -->
   <div class="container">
 
-    <!-- perfil -->
+    <!-- PERFIL -->
     <section id="perfil" class="text-center mb-5 animate-fade">
       <img src="fotoy.jpeg" alt="Foto de perfil" class="rounded-circle mb-4" width="180" height="180">
       <p class="fs-5 mx-auto" style="max-width: 700px;">
@@ -436,12 +515,12 @@
         <table class="table table-dark table-hover align-middle">
           <thead>
             <tr>
-              <th class="py-3">Dato</th>
-              <th class="py-3">Información</th>
+              <th class="py-3">📋 Dato</th>
+              <th class="py-3">ℹ️ Información</th>
             </tr>
           </thead>
           <tbody>
-            <tr><td class="fw-semibold">Nombre</td><td>Anthony Junior</td></tr>
+            <tr><td class="fw-semibold">Nombre</td><td>Anthony Junior Quispe Cruz</td></tr>
             <tr><td class="fw-semibold">Carrera</td><td>Ingeniería de Sistemas</td></tr>
             <tr><td class="fw-semibold">Correo</td><td>60908700@est.unap.edu.pe</td></tr>
             <tr><td class="fw-semibold">Universidad</td><td>Universidad Nacional del Altiplano</td></tr>
@@ -450,9 +529,15 @@
       </div>
     </section>
 
-    <!-- TRABAJOS -->
+    <!-- DIVISOR UNIDAD 1 -->
+    <div id="unidad1" class="unit-divider animate-fade">
+      <h2>📚 PRIMERA UNIDAD</h2>
+      <span class="unit-number">Unidad I</span>
+    </div>
+
+    <!-- TRABAJOS - UNIDAD 1 -->
     <section id="trabajos" class="mb-5 animate-fade">
-      <h2 class="mb-4">Trabajos</h2>
+      <h2 class="mb-4">💼 Trabajos</h2>
       <ul class="list-group list-group-flush">
         <li class="list-group-item d-flex justify-content-between align-items-center">
           <div>
@@ -478,9 +563,9 @@
       </ul>
     </section>
 
-    <!-- EJERCICIOS -->
+    <!-- EJERCICIOS - UNIDAD 1 -->
     <section id="ejercicios" class="mb-5 animate-fade">
-      <h2 class="mb-4">Ejercicios</h2>
+      <h2 class="mb-4">📚 Ejercicios</h2>
 
       <div class="row g-4">
         <!-- CSS -->
@@ -561,9 +646,9 @@
       </div>
     </section>
 
-    <!-- PRÁCTICAS -->
+    <!-- PRÁCTICAS - UNIDAD 1 -->
     <section id="practicas" class="mb-5 animate-fade">
-      <h2 class="mb-4">Prácticas</h2>
+      <h2 class="mb-4">🎯 Prácticas</h2>
 
       <div class="row g-4">
         <!-- CSS -->
@@ -618,15 +703,22 @@
       </div>
     </section>
 
-  </div>
-
-  <!-- FOOTER -->
-  <footer class="text-center py-4 mt-5">
-    <div class="container">
-      <p class="mb-2 fs-5 fw-bold">© 2025 MI PORTAFOLIO DBP I</p>
-      <p class="mb-0">Todos los derechos reservados | Hecho con 🩵 y ☕</p>
+    <!-- DIVISOR UNIDAD 2 -->
+    <div id="unidad2" class="unit-divider animate-fade">
+      <h2>🚀 SEGUNDA UNIDAD</h2>
+      <span class="unit-number">Unidad II</span>
     </div>
-  </footer>
 
-</body>
-</html>
+    <!-- TRABAJOS - UNIDAD 2 -->
+    <section id="trabajos-u2" class="mb-5 animate-fade">
+      <h2 class="mb-4">💼 Trabajos</h2>
+      <div class="empty-state">
+        <div style="font-size: 3rem; margin-bottom: 1rem;">📝</div>
+        <h4 style="color: #00d9c5;">Próximamente</h4>
+        <p>Aquí se mostrarán los trabajos de la segunda unidad</p>
+      </div>
+    </section>
+
+    <!-- EJERCICIOS - UNIDAD 2 -->
+    <section id="ejercicios-u2" class="mb-5 animate-fade">
+      

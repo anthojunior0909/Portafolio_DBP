@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Animación con jQuery</title>
+  <script src="jquery-3.7.1.min.js"></script>
+  <script>
+    $(document).ready(function () {
+      $('button').click(function () {
+        // Oculta el contenido actual
+        $('.resultado').fadeOut(300, function () {
+          // Cuando termine de ocultarse, carga el nuevo contenido
+          $('.resultado').load('resultado.php?variable=Anthony', function () {
+            // Cuando termine de cargar, aparece con animación
+            $('.resultado').fadeIn(500);
+          });
+        });
+      });
+
+      $('a').click(function (e) {
+        e.preventDefault(); // Evita que recargue la página
+        $('.resultado').fadeOut(500);
+      });
+    });
+  </script>
+</head>
+<body>
+  <button>Mostrar resultado</button>
+  <a href="#">Ocultar resultado</a>
+
+  <div class="resultado" style="margin-top: 20px;"></div>
+</body>
+</html>

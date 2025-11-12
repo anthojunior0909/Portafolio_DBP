@@ -1,0 +1,21 @@
+<?php
+
+?>
+<table border=1>
+    <tr>
+        <th>Orden</th>
+        <th>Nombres</th>
+    </tr>
+    <tr>
+        <td>1</td>
+        <td>Edwin</td>
+    </tr>
+    <tr>
+        <td>2</td>
+        <td>Jose</td>
+    </tr>
+    <tr>
+        <td>3</td>
+        <td>Maria</td>
+    </tr>
+</table>

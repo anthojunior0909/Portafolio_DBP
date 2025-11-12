@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Documento AJAX</title>
+</head>
+<body>
+  <input id="nombre" placeholder="Escribe tu nombre">
+  <button onclick="cargarajax()">AJAX</button>
+  <div id="respuesta"></div>
+
+  <script>
+    function cargarajax() {
+      var nombre = document.getElementById('nombre').value;
+      var ajax = new XMLHttpRequest();
+      ajax.open('GET', 'funcion.php?nombre=' + encodeURIComponent(nombre), true);
+      ajax.onreadystatechange = function() {
+        var resp = document.getElementById('respuesta');
+        if (ajax.readyState == 4 && ajax.status == 200) {
+          resp.innerHTML = ajax.responseText;
+        } else {
+          resp.innerHTML = "Cargando...";
+        }
+      };
+      ajax.send();
+    }
+  </script>
+</body>
+</html>
