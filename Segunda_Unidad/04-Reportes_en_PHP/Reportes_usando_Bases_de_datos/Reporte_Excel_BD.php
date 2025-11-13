@@ -28,7 +28,7 @@
  $hojaActiva -> setCellValue('E'.$fila, $contenido['correo']);
  $fila++;
  }
- header('Content-Type: application/vnd.openxmlformatsofficedocument.spreadsheetml.sheet');
+ header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
  header('Content-Disposition: attachment;filename="Alumnos.xlsx"');
  header('Cache-Control: max-age=5');
  $writer = IOFactory::createWriter($excel, 'Xlsx');
