@@ -1,6 +1,6 @@
 <?php
     //conectamos a la base de datos
-    $mysqli = new mysqli("localhost", "root", "", "ajaxbd");
+    $mysqli = new mysqli("localhost", "root", "60908700aA@", "ajaxbd_db");
     if ($mysqli->connect_errno) die($mysqli->connect_error);
     //Recibimos datos del formulario y lo guardamos en la base de datos
     $nombres = $_POST['nombres'];
